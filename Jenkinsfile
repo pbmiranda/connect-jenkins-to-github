@@ -13,6 +13,7 @@ pipeline {
     stages {        
         stage('Relative path') {
             steps {
+                sh('chmod +x ./scripts/fibonacci.sh')
                 sh('./scripts/fibonacci.sh')
             }
         }
