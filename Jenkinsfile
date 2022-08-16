@@ -19,6 +19,9 @@ pipeline {
         }
         stage('Full path') {
             steps {
+                 dir('${env.WORKSPACE}/scripts'){
+                    sh('dir')
+                }
                 sh('${env.WORKSPACE}/scripts/fibonacci.sh')
             }
         }
