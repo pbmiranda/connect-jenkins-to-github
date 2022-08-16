@@ -18,13 +18,13 @@ pipeline {
         }
         stage('Full path') {
             steps {
-                bat('${env.WORKSPACE}/scripts/fibonacci.sh')
+                sh('${env.WORKSPACE}/scripts/fibonacci.sh')
             }
         }
         stage('Change directory') {
             steps {
                 dir('${env.WORKSPACE}/scripts'){
-                    bat('dir')
+                    sh('dir')
                 }
             }
         }
