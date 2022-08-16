@@ -19,15 +19,15 @@ pipeline {
         }
         stage('Full path') {
             steps {
-                 dir('${env.WORKSPACE}/scripts'){
+                 dir("${env.WORKSPACE}/scripts"){
                     sh('dir')
                 }
-                sh('${env.WORKSPACE}/scripts/fibonacci.sh')
+                sh("${env.WORKSPACE}/scripts/fibonacci.sh")
             }
         }
         stage('Change directory') {
             steps {
-                dir('${env.WORKSPACE}/scripts'){
+                dir("${env.WORKSPACE}/scripts"){
                     sh('dir')
                 }
             }
