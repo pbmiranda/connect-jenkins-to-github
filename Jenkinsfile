@@ -9,30 +9,27 @@ pipeline {
         buildDiscarder(logRotator(daysToKeepStr: '10', numToKeepStr: '10'))
         timeout(time: 12, unit: 'HOURS')
         timestamps()
-    }
-    triggers {
-        cron '@midnight'
-    }
+    }  
     stages {
-        stage('Make executable') {
+        stage('Showing file .bat') {
             steps {
-                sh('chmod +x ./scripts/fibonacci.sh')
+                bat('dir ./scripts/')
             }
         }
         stage('Relative path') {
             steps {
-                sh("./scripts/fibonacci.sh ${env.NUMBER}")
+                bat('./scripts/example_windows.bat')
             }
         }
         stage('Full path') {
             steps {
-                sh("${env.WORKSPACE}/scripts/fibonacci.sh ${env.NUMBER}")
+                bat('${env.WORKSPACE}/scripts/example_windows.bat')
             }
         }
         stage('Change directory') {
             steps {
-                dir("${env.WORKSPACE}/scripts"){
-                    sh("./fibonacci.sh ${env.NUMBER}")
+                dir('${env.WORKSPACE}/scripts'){
+                    bat('dir')
                 }
             }
         }
